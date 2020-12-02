@@ -6,11 +6,17 @@ lazy val root =
     .in(file("."))
     .settings(name := "Advent of Code")
     .settings(moduleName := "advent-of-code")
-    .aggregate(day1)
+    .aggregate(day1, day2)
 
 lazy val day1 =
   project
     .in(file("days/one"))
+    .settings(commonSettings ++ dependencies)
+    .dependsOn(lib)
+
+lazy val day2 =
+  project
+    .in(file("days/two"))
     .settings(commonSettings ++ dependencies)
     .dependsOn(lib)
 
@@ -23,6 +29,7 @@ lazy val dependencies = Seq(
   libraryDependencies ++= Seq(
     "co.fs2" %% "fs2-core" % "2.4.4",
     "co.fs2" %% "fs2-io" % "2.4.4",
+    "io.estatico" %% "newtype" % "0.4.3",
     "org.typelevel" %% "cats-core" % "2.1.1",
     "org.typelevel" %% "cats-effect" % "2.1.4"
   )
