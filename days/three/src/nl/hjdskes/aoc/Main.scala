@@ -23,8 +23,6 @@ object Main extends IOApp {
         }
     }
 
-  def print[A: Numeric]: Pipe[IO, A, A] = _.evalTap(nrOfTrees => IO(println(s"Number of trees: $nrOfTrees")))
-
   val solve1: Pipe[IO, (List[Geography], Long), Int] =
     checkSlope(3, 1)
 
@@ -41,7 +39,7 @@ object Main extends IOApp {
     readFile[IO]("input.txt")
       .map(toGeography)
       .zipWithIndex
-      .broadcastThrough(solve1 andThen print, solve2 andThen print)
+      .broadcastThrough(solve1 andThen print("trees"), solve2 andThen print("trees"))
       .compile
       .drain
       .as(ExitCode.Success)

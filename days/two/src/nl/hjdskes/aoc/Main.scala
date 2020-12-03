@@ -31,16 +31,13 @@ object Main extends IOApp {
   val partTwo: Pipe[IO, (Policy, Password), Boolean] =
     _.map { case (pol, pass) => isValidOTCAS(pol, pass) }.filter(identity)
 
-  def print[A]: Pipe[IO, A, A] = _.evalTap(i => IO(println(s"There are $i correct passwords")))
-  def count[F[_], A]: Pipe[F, A, Int] = _.fold(0)((acc, _) => acc + 1)
-
   def run(args: List[String]): IO[ExitCode] =
     readFile[IO]("input.txt")
       .map(parse)
       .unNone
       .broadcastThrough(
-        partOne andThen count andThen print,
-        partTwo andThen count andThen print
+        partOne andThen count andThen print("passwords"),
+        partTwo andThen count andThen print("passwords")
       )
       .compile
       .drain
