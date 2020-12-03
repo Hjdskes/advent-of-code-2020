@@ -6,7 +6,7 @@ lazy val root =
     .in(file("."))
     .settings(name := "Advent of Code")
     .settings(moduleName := "advent-of-code")
-    .aggregate(day1, day2)
+    .aggregate(day1, day2, day3)
 
 lazy val day1 =
   project
@@ -17,6 +17,12 @@ lazy val day1 =
 lazy val day2 =
   project
     .in(file("days/two"))
+    .settings(commonSettings ++ dependencies)
+    .dependsOn(lib)
+
+lazy val day3 =
+  project
+    .in(file("days/three"))
     .settings(commonSettings ++ dependencies)
     .dependsOn(lib)
 
