@@ -12,6 +12,12 @@ lazy val day1 =
   project
     .in(file("days/one"))
     .settings(commonSettings ++ dependencies)
+    .dependsOn(lib)
+
+lazy val lib =
+  project
+    .in(file("lib"))
+    .settings(commonSettings ++ dependencies)
 
 lazy val dependencies = Seq(
   libraryDependencies ++= Seq(
