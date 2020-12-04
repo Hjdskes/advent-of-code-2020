@@ -32,7 +32,7 @@ object Main extends IOApp {
     _.map { case (pol, pass) => isValidOTCAS(pol, pass) }.filter(identity)
 
   def run(args: List[String]): IO[ExitCode] =
-    readFile[IO]("input.txt")
+    readFile[IO]("days/two/resources/input.txt")
       .map(parse)
       .unNone
       .broadcastThrough(

@@ -27,7 +27,7 @@ object Main extends IOApp {
 
   def run(@unused args: List[String]): IO[ExitCode] =
     for {
-      numbers <- readFile[IO]("input.txt").map(_.toInt).compile.toList
+      numbers <- readFile[IO]("days/one/resources/input.txt").map(_.toInt).compile.toList
       _ <- print1(problemOneEfficiently(numbers))
       _ <- print2(findSum(numbers, 2))
       _ <- print2(findSum(numbers, 3))

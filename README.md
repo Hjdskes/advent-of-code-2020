@@ -7,6 +7,9 @@ I solve the problems with purely functional Scala and the Typelevel ecosystem.
 In particular, I try to use streaming solutions where possible because I think
 it's an elegant and efficient paradigm, but also to get more familiar with fs2.
 
+To run the solution to a particular day, simply execute `sbt dayN/run` where 1
+<= `N` <= 25.
+
 ## Improvements and bugs
 
 If you've found an improvement to one of my solutions or a bug, please share!

@@ -36,7 +36,7 @@ object Main extends IOApp {
     ).reduce(_ * _)
 
   def run(args: List[String]): IO[ExitCode] =
-    readFile[IO]("input.txt")
+    readFile[IO]("days/three/resources/input.txt")
       .map(toGeography)
       .zipWithIndex
       .broadcastThrough(solve1 andThen print("trees"), solve2 andThen print("trees"))
