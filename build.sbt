@@ -26,6 +26,13 @@ lazy val day3 =
     .settings(commonSettings ++ dependencies)
     .dependsOn(lib)
 
+lazy val day4 =
+  project
+    .in(file("days/four"))
+    .settings(commonSettings ++ dependencies)
+    .settings(testFrameworks += new TestFramework("munit.Framework"))
+    .dependsOn(lib)
+
 lazy val lib =
   project
     .in(file("lib"))
@@ -36,8 +43,12 @@ lazy val dependencies = Seq(
     "co.fs2" %% "fs2-core" % "2.4.4",
     "co.fs2" %% "fs2-io" % "2.4.4",
     "io.estatico" %% "newtype" % "0.4.3",
+    "org.scalacheck" %% "scalacheck" % "1.14.3",
+    "org.scalameta" %% "munit" % "0.7.19",
+    "org.scalameta" %% "munit-scalacheck" % "0.7.19",
     "org.typelevel" %% "cats-core" % "2.1.1",
-    "org.typelevel" %% "cats-effect" % "2.1.4"
+    "org.typelevel" %% "cats-effect" % "2.1.4",
+    "org.typelevel" %% "cats-parse" % "0.1.0"
   )
 )
 
