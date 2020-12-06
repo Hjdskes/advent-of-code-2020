@@ -39,6 +39,12 @@ lazy val day5 =
     .settings(commonSettings ++ dependencies)
     .dependsOn(lib)
 
+lazy val day6 =
+  project
+    .in(file("days/six"))
+    .settings(commonSettings ++ dependencies)
+    .dependsOn(lib)
+
 lazy val lib =
   project
     .in(file("lib"))
