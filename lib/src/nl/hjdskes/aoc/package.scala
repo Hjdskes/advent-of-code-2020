@@ -18,6 +18,6 @@ package object aoc {
 
   def debug[F[_]: Sync, A]: Pipe[F, A, A] = _.evalTap(s => Sync[F].delay(println(s.toString)))
 
-  def print[F[_]: Sync, A](what: String): Pipe[F, A, A] =
-    _.evalTap(i => Sync[F].delay(println(s"Number of $what: $i")))
+  def print[F[_]: Sync, A](what: String): Pipe[F, A, Unit] =
+    _.evalMap(i => Sync[F].delay(println(s"Number of $what: $i")))
 }

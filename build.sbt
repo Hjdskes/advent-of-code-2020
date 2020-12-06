@@ -33,6 +33,12 @@ lazy val day4 =
     .settings(testFrameworks += new TestFramework("munit.Framework"))
     .dependsOn(lib)
 
+lazy val day5 =
+  project
+    .in(file("days/five"))
+    .settings(commonSettings ++ dependencies)
+    .dependsOn(lib)
+
 lazy val lib =
   project
     .in(file("lib"))
